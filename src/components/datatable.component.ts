@@ -112,7 +112,7 @@ import { mouseEvent } from '../events';
       <div class="datatable-overlay" *ngIf="!rows.length && !loadingIndicator && !displayMessage" [@enterAnimation]>
         <i [class]="cssClasses.errorEmpty"></i>
         <h2> No results found. </h2>
-        <p> No results were able to be be found for the query. </p>
+        <p> No results were able to be found for this query. </p>
       </div>
 
       <div class="datatable-overlay" *ngIf="displayMessage && !loadingIndicator" [@enterAnimation]>
