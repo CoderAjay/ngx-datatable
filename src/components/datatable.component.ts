@@ -111,8 +111,8 @@ import { mouseEvent } from '../events';
 
       <div class="datatable-overlay" *ngIf="!rows.length && !loadingIndicator && !displayMessage" [@enterAnimation]>
         <i [class]="cssClasses.errorEmpty"></i>
-        <h2> No results found. </h2>
-        <p> No results were able to be found for this query. </p>
+        <h2> {{noItemsMessage.name}} </h2>
+        <p> {{noItemsMessage.message}} </p>
       </div>
 
       <div class="datatable-overlay" *ngIf="displayMessage && !loadingIndicator" [@enterAnimation]>
@@ -270,11 +270,18 @@ export class DatatableComponent implements OnInit, DoCheck, AfterViewInit {
    */
   @Input() externalSorting: boolean = false;
 
-
   /**
    * Custom error message to display.
    */
   @Input() displayMessage: { name: string, message: string, retry: boolean };
+
+  /**
+   * Message to display if no items can be found.
+   */
+  @Input() noItemsMessage: { name: string, message: string } = {
+    name: 'No results found.',
+    message: 'No results were able to be found for this query.'
+  };
 
   /**
    * Event emitter if the retry button is
