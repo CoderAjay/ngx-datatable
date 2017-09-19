@@ -3,7 +3,8 @@ import {
   HostListener, ContentChildren, OnInit, QueryList, AfterViewInit,
   HostBinding, ContentChild, TemplateRef, IterableDiffer,
   DoCheck, KeyValueDiffers, KeyValueDiffer, ViewEncapsulation,
-  ChangeDetectionStrategy, ChangeDetectorRef
+  ChangeDetectionStrategy, ChangeDetectorRef,
+  trigger, transition, style, animate
 } from '@angular/core';
 
 import {
@@ -20,6 +21,20 @@ import { DatatableFooterDirective } from './footer';
 import { mouseEvent } from '../events';
 
 @Component({
+  animations: [
+    trigger(
+      'enterAnimation', [
+        transition(':enter', [
+          style({ opacity: 0 }),
+          animate('200ms', style({ opacity: 1 }))
+        ]),
+        transition(':leave', [
+          style({ opacity: 1 }),
+          animate('100ms', style({ opacity: 0 }))
+        ])
+      ]
+    )
+  ],
   selector: 'ngx-datatable',
   template: `
     <div
@@ -68,7 +83,6 @@ import { mouseEvent } from '../events';
         [innerWidth]="innerWidth"
         [bodyHeight]="bodyHeight"
         [selectionType]="selectionType"
-        [emptyMessage]="messages.emptyMessage"
         [rowIdentity]="rowIdentity"
         [rowClass]="rowClass"
         [selectCheck]="selectCheck"
@@ -94,6 +108,19 @@ import { mouseEvent } from '../events';
         [pagerNextIcon]="cssClasses.pagerNext"
         (page)="onFooterPage($event)">
       </datatable-footer>
+
+      <div class="datatable-overlay" *ngIf="!rows.length && !loadingIndicator && !displayMessage" [@enterAnimation]>
+        <i [class]="cssClasses.errorEmpty"></i>
+        <h2> No results found. </h2>
+        <p> No results were able to be be found for the query. </p>
+      </div>
+
+      <div class="datatable-overlay" *ngIf="displayMessage && !loadingIndicator" [@enterAnimation]>
+        <i [class]="cssClasses.errorWarning"></i>
+        <h2> {{ displayMessage.name }} </h2>
+        <p> {{ displayMessage.message }} </p>
+        <button class="btn" *ngIf="displayMessage.retry" (click)="retryAction.next()"> Retry</button>
+      </div>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -243,6 +270,19 @@ export class DatatableComponent implements OnInit, DoCheck, AfterViewInit {
    */
   @Input() externalSorting: boolean = false;
 
+
+  /**
+   * Custom error message to display.
+   */
+  @Input() displayMessage: { name: string, message: string, retry: boolean };
+
+  /**
+   * Event emitter if the retry button is
+   * pressed. Indicating the consumer should re-try
+   * fetching data.
+   */
+  @Output() retryAction = new EventEmitter<void>();
+
   /**
    * The page size to be shown.
    * Default value: `undefined`
@@ -336,7 +376,9 @@ export class DatatableComponent implements OnInit, DoCheck, AfterViewInit {
     pagerLeftArrow: 'datatable-icon-left',
     pagerRightArrow: 'datatable-icon-right',
     pagerPrevious: 'datatable-icon-prev',
-    pagerNext: 'datatable-icon-skip'
+    pagerNext: 'datatable-icon-skip',
+    errorWarning: 'datatable-icon-alert',
+    errorEmpty: 'datatable-icon-stop',
   };
 
   /**

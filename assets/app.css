@@ -301,3 +301,33 @@ select {
 	font-weight: bold;
 	background-color: #ffeb3b;
 }
+
+
+.btn:focus:not([disabled]), .btn:focus:not(.disabled), .btn:hover:not([disabled]), .btn:hover:not(.disabled) {
+	cursor: pointer;
+	background: #313847;
+}
+.btn:hover, .btn:focus, .btn:active {
+	text-decoration: none;
+}
+.btn {
+	box-sizing: border-box;
+	color: #FFF;
+	display: inline-block;
+	margin: 0 0.20em;
+	position: relative;
+	text-align: center;
+	text-decoration: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	font: inherit;
+	font-size: .9em;
+	font-weight: bold;
+	outline: none;
+	background: #455066;
+	border: solid 1px transparent;
+	border-radius: 2px;
+	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
+	transition: background-color 200ms, box-shadow 200ms;

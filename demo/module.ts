@@ -1,5 +1,7 @@
+import {EmptyDataComponent} from './basic/empty.component';
 import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgxDatatableModule } from '../src';
 import { AppComponent } from './app.component';
@@ -100,9 +102,10 @@ import { ColumnPinningComponent } from './columns/pinning.component';
     RowCssComponent,
     DynamicHeightComponent,
     FooterDemoComponent,
-    RowGroupingComponent
+    RowGroupingComponent,
+    EmptyDataComponent,
   ],
-  imports: [BrowserModule, NgxDatatableModule],
+  imports: [BrowserModule, BrowserAnimationsModule, NgxDatatableModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

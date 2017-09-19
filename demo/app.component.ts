@@ -15,7 +15,7 @@ import { Location, LocationStrategy, HashLocationStrategy } from '@angular/commo
     }
   ],
   template: `
-    <div [class.dark]="state === 'dark'">
+    <div [class.dark]="state === 'dark' || state === 'empty'">
       <nav>
         <h3>ngx-datatable <small>({{version}})</small></h3>
         <ul class="main-ul">
@@ -46,6 +46,7 @@ import { Location, LocationStrategy, HashLocationStrategy } from '@angular/commo
               <li><a href="#css" (click)="state='css'">CSS Classes</a></li>
               <li><a href="#dark" (click)="state='dark'">Dark theme</a></li>
               <li><a href="#footer" (click)="state='footer'">Footer Template</a></li>
+              <li><a href="#empty" (click)="state='empty'">Empty Template</a></li>
             </ul>
           </li>
           <li>
@@ -128,6 +129,7 @@ import { Location, LocationStrategy, HashLocationStrategy } from '@angular/commo
         <dynamic-height-demo *ngIf="state === 'dynamic'"></dynamic-height-demo>
         <basic-dark-theme-demo *ngIf="state === 'dark'"></basic-dark-theme-demo>
         <footer-demo *ngIf="state === 'footer'"></footer-demo>
+        <empty-data-demo *ngIf="state === 'empty'"></empty-data-demo>
         
         <!-- Paging -->
         <row-grouping-demo *ngIf="state === 'row-grouping'"></row-grouping-demo>

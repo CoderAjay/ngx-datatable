@@ -38,51 +38,60 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.datatable-icon-filter:before {
-  content: "\62";
-}
-.datatable-icon-collapse:before {
+.datatable-icon-prev:before {
   content: "\61";
 }
-.datatable-icon-expand:before {
-  content: "\63";
-}
-.datatable-icon-close:before {
-  content: "\64";
-}
-.datatable-icon-up:before {
-  content: "\65";
-}
-.datatable-icon-down:before {
-  content: "\66";
-}
-.datatable-icon-sort:before {
-  content: "\67";
-}
-.datatable-icon-done:before {
-  content: "\68";
-}
-.datatable-icon-done-all:before {
-  content: "\69";
-}
-.datatable-icon-search:before {
-  content: "\6a";
-}
-.datatable-icon-pin:before {
-  content: "\6b";
-}
-.datatable-icon-add:before {
-  content: "\6d";
-}
-.datatable-icon-left:before {
-  content: "\6f";
+.datatable-icon-skip:before {
+  content: "\62";
 }
 .datatable-icon-right:before {
+  content: "\63";
+}
+.datatable-icon-done-all:before {
+  content: "\64";
+}
+.datatable-icon-filter:before {
+  content: "\65";
+}
+.datatable-icon-expand:before {
+  content: "\66";
+}
+.datatable-icon-close:before {
+  content: "\67";
+}
+.datatable-icon-up:before {
+  content: "\68";
+}
+.datatable-icon-down:before {
+  content: "\69";
+}
+.datatable-icon-sort:before {
+  content: "\6a";
+}
+.datatable-icon-done:before {
+  content: "\6b";
+}
+.datatable-icon-collapse:before {
+  content: "\6c";
+}
+.datatable-icon-search:before {
+  content: "\6d";
+}
+.datatable-icon-pin:before {
+  content: "\6e";
+}
+.datatable-icon-add:before {
+  content: "\6f";
+}
+.datatable-icon-left:before {
   content: "\70";
 }
-.datatable-icon-skip:before {
+.datatable-icon-danger:before {
   content: "\71";
 }
-.datatable-icon-prev:before {
+.datatable-icon-alert:before {
   content: "\72";
+}
+.datatable-icon-stop:before {
+  content: "\73";
 }
