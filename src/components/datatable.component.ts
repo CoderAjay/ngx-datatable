@@ -118,7 +118,7 @@ import { mouseEvent } from '../events';
       <div class="datatable-overlay" *ngIf="displayMessage && !loadingIndicator" [@enterAnimation]>
         <i [class]="cssClasses.errorWarning"></i>
         <h2> {{ displayMessage.name }} </h2>
-        <p> {{ displayMessage.message }} </p>
+        <p *ngFor="let message of (isArray(displayMessage.message) ? displayMessage.message : [displayMessage.message])"> {{ message }} </p>
         <button class="btn" *ngIf="displayMessage.retry" (click)="retryAction.next()"> Retry</button>
       </div>
     </div>
@@ -273,7 +273,7 @@ export class DatatableComponent implements OnInit, DoCheck, AfterViewInit {
   /**
    * Custom error message to display.
    */
-  @Input() displayMessage: { name: string, message: string, retry: boolean };
+  @Input() displayMessage: { name: string, message: string | string[], retry: boolean };
 
   /**
    * Message to display if no items can be found.
@@ -1021,5 +1021,9 @@ export class DatatableComponent implements OnInit, DoCheck, AfterViewInit {
    */
   onBodySelect(event: any): void {
     this.select.emit(event);
+  }
+
+  isArray(arr) {
+    return Array.isArray(arr);
   }
 }

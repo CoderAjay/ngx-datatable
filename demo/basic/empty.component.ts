@@ -19,7 +19,7 @@ import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
         [trackByProp]="'updated'"
         [displayMessage]="{
           name: 'hello',
-          message: 'something might have gone wrong',
+          message: ['something might have gone wrong', 'testing'],
           retry: true
         }"
         [loadingIndicator]="isFetching"
