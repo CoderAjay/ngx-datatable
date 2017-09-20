@@ -1023,7 +1023,7 @@ export class DatatableComponent implements OnInit, DoCheck, AfterViewInit {
     this.select.emit(event);
   }
 
-  isArray(arr) {
+  isArray(arr: object[]): boolean {
     return Array.isArray(arr);
   }
 }

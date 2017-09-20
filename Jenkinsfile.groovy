@@ -22,9 +22,6 @@ node('docker-build') {
                 }
                 sh 'cp package.json release'
                 sh 'cd release && npm publish --access public'
-            },
-            'prepare-deploy-internal': {
-                sh 'npm run build'
             }
         }
     }
