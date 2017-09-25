@@ -112,7 +112,8 @@ import { mouseEvent } from '../events';
       <div class="datatable-overlay" *ngIf="!rows.length && !loadingIndicator && !displayMessage" [@enterAnimation]>
         <i [class]="cssClasses.errorEmpty"></i>
         <h2> {{noItemsMessage.name}} </h2>
-        <p> {{noItemsMessage.message}} </p>
+        <p *ngIf="noItemsMessage.message.length"> {{noItemsMessage.message}} </p>
+        <button class="btn" *ngIf="tryClearFilter" (click)="clearFilter.next()"> Clear Filters</button>
       </div>
 
       <div class="datatable-overlay" *ngIf="displayMessage && !loadingIndicator" [@enterAnimation]>
@@ -279,10 +280,21 @@ export class DatatableComponent implements OnInit, DoCheck, AfterViewInit {
    * Message to display if no items can be found.
    */
   @Input() noItemsMessage: { name: string, message: string } = {
-    name: 'No results found.',
-    message: 'No results were able to be found for this query.'
+    name: 'No results were found.',
+    message: ''
   };
 
+
+  /**
+   * Whether to show the clear filters button on no-items fond.
+   */
+  @Input() tryClearFilter = false;
+
+  /**
+   * Event Emitter called if we should clear filters.
+   */
+  @Output() clearFilter = new EventEmitter<void>();
+ 
   /**
    * Event emitter if the retry button is
    * pressed. Indicating the consumer should re-try
