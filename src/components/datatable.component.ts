@@ -113,7 +113,7 @@ import { mouseEvent } from '../events';
         <i [class]="cssClasses.errorEmpty"></i>
         <h2> {{noItemsMessage.name}} </h2>
         <p *ngIf="noItemsMessage.message.length"> {{noItemsMessage.message}} </p>
-        <button class="btn" *ngIf="tryClearFilter" (click)="clearFilter.next()"> Clear Filters</button>
+        <button class="btn filterBtn" *ngIf="tryClearFilter" (click)="clearFilter.next()"> Clear Filters</button>
       </div>
 
       <div class="datatable-overlay" *ngIf="displayMessage && !loadingIndicator" [@enterAnimation]>
