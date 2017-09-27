@@ -109,14 +109,14 @@ import { mouseEvent } from '../events';
         (page)="onFooterPage($event)">
       </datatable-footer>
 
-      <div class="datatable-overlay" *ngIf="!rows.length && !loadingIndicator && !displayMessage" [@enterAnimation] [style.top.px]="headerHeight" [style.bottom.px]="footerHeight">
+      <div class="datatable-overlay" *ngIf="!rows.length && !loadingIndicator && !displayMessage" [@enterAnimation] [style.top.px]="headerHeight" [style.bottom.px]="footerHeight - 1">
         <i [class]="cssClasses.errorEmpty"></i>
         <h2> {{noItemsMessage.name}} </h2>
         <p *ngIf="noItemsMessage.message.length"> {{noItemsMessage.message}} </p>
         <button class="btn filterBtn" *ngIf="tryClearFilter" (click)="clearFilter.next()"> Clear filters</button>
       </div>
 
-      <div class="datatable-overlay" *ngIf="displayMessage && !loadingIndicator" [@enterAnimation] [style.top.px]="headerHeight" [style.bottom.px]="footerHeight">
+      <div class="datatable-overlay" *ngIf="displayMessage && !loadingIndicator" [@enterAnimation] [style.top.px]="headerHeight" [style.bottom.px]="footerHeight - 1">
         <i [class]="cssClasses.errorWarning"></i>
         <h2> {{ displayMessage.name }} </h2>
         <p *ngFor="let message of (isArray(displayMessage.message) ? displayMessage.message : [displayMessage.message])"> {{ message }} </p>
