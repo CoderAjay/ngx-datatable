@@ -1,4 +1,32 @@
 # Changelog
+
+## 11.0.4
+- Bug: Fix Angular5 Aot Issue
+- Bug: Fix Vendor Prefix Error
+
+## 11.0.1, 11.0.2, 11.0.3
+- Bug: Angular 5 bugs
+
+## 11.0.0
+- Chore: Upgrade to Angular5
+
+## 10.4.0
+- Feature: Ability to filter checkable rows (#1056)
+- Feature: Allow sorting based on whole row (#1074)
+- Bug: Fix protractor events (#1081)
+- Bug: Fix misalignment on smaller screens (#1081)
+
+## 10.3.0
+- Feature: Bootstrap theme
+- Bug: Fix CSS for row grouping (#1053)
+- Bug: Fix group row values (#1034)
+- Bug: Fix cell overflow w/ fluid height (#1030)
+- Bug: Fix for column sort (#1018)
+- Bug: Strip HTML for null values (#966)
+- Bug: Update context in cell header (#935)
+- Bug: Add bounds to offset (#978)
+- Bug: Make selection apply to all rows (#974)
+
 ## 10.2.3
 - Bug: Fix checkbox not being shown #956
 - Bug: Fix IE displaying null #967

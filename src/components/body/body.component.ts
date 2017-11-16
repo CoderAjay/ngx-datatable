@@ -5,7 +5,7 @@ import {
 import { translateXY, columnsByPin, columnGroupWidths, RowHeightCache } from '../../utils';
 import { SelectionType } from '../../types';
 import { ScrollerComponent } from './scroller.component';
-import { mouseEvent } from '../../events';
+import { MouseEvent } from '../../events';
 
 @Component({
   selector: 'datatable-body',
@@ -55,6 +55,7 @@ import { mouseEvent } from '../../events';
             [rowIndex]="getRowIndex(group)"
             [expanded]="getRowExpanded(group)"            
             [rowClass]="rowClass"
+            [displayCheck]="displayCheck"
             (activate)="selector.onActivate($event, indexes.first + i)">
           </datatable-body-row>
           <ng-template #groupedRowsTemplate>
@@ -97,6 +98,7 @@ export class DataTableBodyComponent implements OnInit, OnDestroy {
   @Input() rowDetail: any;
   @Input() groupHeader: any;
   @Input() selectCheck: any;
+  @Input() displayCheck: any;
   @Input() trackByProp: string;
   @Input() rowClass: any;
   @Input() groupedRows: any;
@@ -197,10 +199,12 @@ export class DataTableBodyComponent implements OnInit, OnDestroy {
    * based on the row heights cache for virtual scroll. Other scenarios
    * calculate scroll height automatically (as height will be undefined).
    */
-  get scrollHeight(): number {
+  get scrollHeight(): number | undefined {
     if (this.scrollbarV) {
       return this.rowHeightsCache.query(this.rowCount - 1);
     }
+    // avoid TS7030: Not all code paths return a value.
+    return undefined;
   }
 
   rowHeightsCache: RowHeightCache = new RowHeightCache();
@@ -226,7 +230,7 @@ export class DataTableBodyComponent implements OnInit, OnDestroy {
    */
   constructor(private cd: ChangeDetectorRef) {
     // declare fn here so we can get access to the `this` property
-    this.rowTrackingFn = function(index: number, row: any): any {
+    this.rowTrackingFn = function(this: any, index: number, row: any): any {
       const idx = this.getRowIndex(row);
       if (this.trackByProp) {
         return `${idx}-${this.trackByProp}`;
@@ -328,7 +332,7 @@ export class DataTableBodyComponent implements OnInit, OnDestroy {
     if (direction === 'up') {
       offset = Math.ceil(offset);
     } else if (direction === 'down') {
-      offset = Math.ceil(offset);
+      offset = Math.floor(offset);
     }
 
     if (direction !== undefined && !isNaN(offset)) {

@@ -87,6 +87,7 @@
    * Shared Styles
    */
   .datatable-body-row,
+  .datatable-row-center,
   .datatable-header-inner {
     display: -webkit-box;
     display: -moz-box;
@@ -121,7 +122,7 @@
 
   .datatable-row-left,
   .datatable-row-center,
-  .datatable-row-grouping,
+  .datatable-row-group,
   .datatable-row-right {
     position:relative;
   }
