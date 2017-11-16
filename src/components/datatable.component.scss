@@ -1,6 +1,6 @@
 .ngx-datatable {
   display: block;
-  overflow:hidden;
+  overflow: hidden;
   justify-content: center;
   position: relative;
   -webkit-transform: translate3d(0, 0, 0);
@@ -24,7 +24,7 @@
    */
   &.scroll-vertical {
     .datatable-body {
-      overflow-y:auto;
+      overflow-y: auto;
       .datatable-row-wrapper {
         position: absolute;
       }
@@ -37,7 +37,7 @@
    */
   &.scroll-horz {
     .datatable-body {
-      overflow-x:auto;
+      overflow-x: auto;
       -webkit-overflow-scrolling: touch;
     }
   }
@@ -47,9 +47,9 @@
    */
   &.fixed-header {
     .datatable-header {
-      .datatable-header-inner{
+      .datatable-header-inner {
         white-space: nowrap;
-        .datatable-header-cell{
+        .datatable-header-cell {
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -62,9 +62,9 @@
    * Fixed row height adjustments
    */
   &.fixed-row {
-    .datatable-scroll{
+    .datatable-scroll {
       white-space: nowrap;
-      
+
       .datatable-body-row {
         white-space: nowrap;
 
@@ -78,7 +78,7 @@
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
-        }        
+        }
       }
     }
   }
@@ -102,6 +102,11 @@
     -o-flex-flow: row;
     flex-flow: row;
   }
+  
+  .datatable-header-cell {
+    user-select: none;
+    cursor: move;
+  }
 
   .datatable-body-cell,
   .datatable-header-cell {
@@ -109,6 +114,7 @@
     vertical-align: top;
     display: inline-block;
     line-height: 1.625;
+  
 
     &:focus {
       outline: none;
@@ -124,7 +130,7 @@
   .datatable-row-center,
   .datatable-row-group,
   .datatable-row-right {
-    position:relative;
+    position: relative;
   }
 
   /**
@@ -134,7 +140,7 @@
     display: block;
     overflow: hidden;
 
-    .datatable-header-inner{
+    .datatable-header-inner {
       align-items: stretch;
       -webkit-align-items: stretch;
     }
@@ -160,7 +166,7 @@
         cursor: pointer;
       }
 
-      .resize-handle{
+      .resize-handle {
         display: inline-block;
         position: absolute;
         right: 0;
@@ -173,7 +179,7 @@
       }
 
       &.resizeable:hover {
-        .resize-handle{
+        .resize-handle {
           visibility: visible;
         }
       }
@@ -188,7 +194,7 @@
     z-index: 10;
     display: block;
 
-    .datatable-scroll{
+    .datatable-scroll {
       display: inline-block;
     }
 
@@ -213,7 +219,7 @@
     }
 
     .datatable-body-row {
-      outline:none;
+      outline: none;
 
       > div {
         display: -webkit-box;
@@ -247,11 +253,11 @@
       }
     }
 
-    .page-count{
+    .page-count {
       flex: 1 1 20%;
     }
 
-    .datatable-pager{
+    .datatable-pager {
       flex: 1 1 80%;
       text-align: right;
 
@@ -264,7 +270,7 @@
       }
 
       .pager {
-        li, li a{
+        li, li a {
           outline: none;
         }
 
@@ -285,22 +291,22 @@
 
 .datatable-overlay {
   position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	z-index: 100;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
   background: rgba(0, 0, 0, 0.63);
   color: #FFF;
-  
-	display: flex;
-	flex-direction: column;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	max-width: 100%;
-	place-content: center;
-	align-items: center;
-	-webkit-box-pack: center;
+
+  display: flex;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  max-width: 100%;
+  place-content: center;
+  align-items: center;
+  -webkit-box-pack: center;
   -webkit-box-align: center;
   font-family: "Source Sans Pro", "Open Sans", Arial, sans-serif;
 
@@ -322,6 +328,6 @@
     line-height: 1.75;
     font-weight: 400;
     margin: 0;
-  	padding-bottom: 15px;
+    padding-bottom: 15px;
   }
 }
