@@ -107,6 +107,7 @@ import { ColumnPinningComponent } from './columns/pinning.component';
     FooterDemoComponent,
     RowGroupingComponent,
     EmptyDataComponent,
+    BootstrapThemeComponent,
   ],
   imports: [BrowserModule, BrowserAnimationsModule, NgxDatatableModule],
   bootstrap: [AppComponent]

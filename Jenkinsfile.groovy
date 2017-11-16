@@ -16,7 +16,7 @@ node('docker-build') {
         stage('deploys') {
             parallel 'deploy-npm': {
                 sh 'npm run package'
-                sh 'npm version --no-git-tag-version 0.1.$BUILD_NUMBER'
+                sh 'npm version --no-git-tag-version 1.0.$BUILD_NUMBER'
                 withCredentials([string(credentialsId: 'NPM_AUTH_TOKEN', variable: 'npm_auth')]) {
                     sh 'echo "//registry.npmjs.org/:_authToken=$npm_auth" > ~/.npmrc'
                 }
