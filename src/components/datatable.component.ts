@@ -86,7 +86,6 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
         [innerWidth]="_innerWidth"
         [bodyHeight]="bodyHeight"
         [selectionType]="selectionType"
-        [emptyMessage]="messages.emptyMessage"
         [rowIdentity]="rowIdentity"
         [rowClass]="rowClass"
         [selectCheck]="selectCheck"

@@ -77,11 +77,6 @@ import { MouseEvent } from '../../events';
           </ng-template>
         </datatable-row-wrapper>
       </datatable-scroller>
-      <div
-        class="empty-row"
-        *ngIf="!rows?.length && !loadingIndicator"
-        [innerHTML]="emptyMessage">
-      </div>
     </datatable-selection>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -97,7 +92,6 @@ export class DataTableBodyComponent implements OnInit, OnDestroy {
   @Input() externalPaging: boolean;
   @Input() rowHeight: number;
   @Input() offsetX: number;
-  @Input() emptyMessage: string;
   @Input() selectionType: SelectionType;
   @Input() selected: any[] = [];
   @Input() rowIdentity: any;
