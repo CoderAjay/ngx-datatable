@@ -38,10 +38,10 @@ import { MouseEvent } from '../../events';
           [rowDetail]="rowDetail"
           [groupHeader]="groupHeader"
           [offsetX]="offsetX"
-          [detailRowHeight]="getDetailRowHeight(group[i],i)"
+          [detailRowHeight]="getDetailRowHeight(group ? group[i] : null,i)"
           [row]="group"
           [expanded]="getRowExpanded(group)"
-          [rowIndex]="getRowIndex(group[i])"
+          [rowIndex]="getRowIndex(group ? group[i] : null)"
           (rowContextmenu)="rowContextmenu.emit($event)">
           <datatable-body-row
             *ngIf="!groupedRows; else groupedRowsTemplate"
@@ -449,6 +449,7 @@ export class DataTableBodyComponent implements OnInit, OnDestroy {
    */
   getDetailRowHeight = (row?: any, index?: any): number => {
     if (!this.rowDetail) return 0;
+    if (!row) return 0;
     const rowHeight = this.rowDetail.rowHeight;
     return typeof rowHeight === 'function' ? rowHeight(row, index) : rowHeight;
   }
