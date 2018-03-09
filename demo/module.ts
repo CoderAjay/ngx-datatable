@@ -61,6 +61,7 @@ import { ColumnStandardComponent } from './columns/column-standard.component';
 import { ColumnForceComponent } from './columns/column-force.component';
 import { ColumnFlexComponent } from './columns/column-flex.component';
 import { ColumnPinningComponent } from './columns/pinning.component';
+import { ToggleRowDetailComponent } from './basic/toggle-row-detail.component';
 
 @NgModule({
   declarations: [
@@ -107,6 +108,7 @@ import { ColumnPinningComponent } from './columns/pinning.component';
     FooterDemoComponent,
     RowGroupingComponent,
     EmptyDataComponent,
+    ToggleRowDetailComponent,
     BootstrapThemeComponent,
   ],
   imports: [BrowserModule, BrowserAnimationsModule, NgxDatatableModule],

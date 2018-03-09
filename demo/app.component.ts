@@ -47,6 +47,7 @@ import { Location, LocationStrategy, HashLocationStrategy } from '@angular/commo
               <li><a href="#css" (click)="state='css'">CSS Classes</a></li>
               <li><a href="#footer" (click)="state='footer'">Footer Template</a></li>
               <li><a href="#empty" (click)="state='empty'">Empty Template</a></li>
+              <li><a href="#toggle-row-detail" (click)="state='toggle-row-detail'">Toggle Row Detail Template</a></li>
             </ul>
           </li>
           <li>
@@ -142,6 +143,7 @@ import { Location, LocationStrategy, HashLocationStrategy } from '@angular/commo
 
         <footer-demo *ngIf="state === 'footer'"></footer-demo>
         <empty-data-demo *ngIf="state === 'empty'"></empty-data-demo>
+        <toggle-row-detail *ngIf="state === 'toggle-row-detail'"></toggle-row-detail>
         
         <!-- Paging -->
         <row-grouping-demo *ngIf="state === 'row-grouping'"></row-grouping-demo>

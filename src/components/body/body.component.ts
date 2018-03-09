@@ -106,6 +106,7 @@ export class DataTableBodyComponent implements OnInit, OnDestroy {
   @Input() innerWidth: number;
   @Input() groupRowsBy: string;
   @Input() virtualization: boolean;
+  @Input() rowDetailFn: (row: any) => boolean = () => false;
 
   @Input() set pageSize(val: number) {
     this._pageSize = val;
@@ -119,6 +120,15 @@ export class DataTableBodyComponent implements OnInit, OnDestroy {
   @Input() set rows(val: any[]) {
     this._rows = val;
     this.rowExpansions.clear();
+
+    if (this.rowDetailFn) {
+      val.forEach(i => {
+        if (this.rowDetailFn(i)) {
+          this.rowExpansions.set(i, 1);
+        }
+      });
+    }
+
     this.recalcLayout();
   }
 

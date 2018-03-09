@@ -62,9 +62,10 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
         (reorder)="onColumnReorder($event)"
         (select)="onHeaderSelect($event)"
         (columnContextmenu)="onColumnContextmenu($event)">
-      </datatable-header>
-      <datatable-body
+        </datatable-header>
+        <datatable-body
         [groupRowsBy]="groupRowsBy"
+        [rowDetailFn]="rowDetailFn"
         [groupedRows]="groupedRows"
         [rows]="_internalRows"
         [groupExpansionDefault]="groupExpansionDefault"
@@ -223,6 +224,12 @@ export class DatatableComponent implements OnInit, DoCheck, AfterViewInit {
   get columns(): TableColumn[] {
     return this._columns;
   }
+
+/**
+ * This sets whether a row detail can be shown or not.
+ */
+  @Input()
+  public rowDetailFn: (row: any) => boolean;
 
   /**
    * List of row objects that should be
