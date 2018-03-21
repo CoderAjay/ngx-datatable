@@ -90,7 +90,7 @@ export class DataTableBodyComponent implements OnInit, OnDestroy {
   @Input() scrollbarH: boolean;
   @Input() loadingIndicator: boolean;
   @Input() externalPaging: boolean;
-  @Input() rowHeight: ((row: any) => number) | number;
+  @Input() rowHeight: number | ((row: any) => number);
   @Input() offsetX: number;
   @Input() selectionType: SelectionType;
   @Input() selected: any[] = [];
@@ -404,14 +404,16 @@ export class DataTableBodyComponent implements OnInit, OnDestroy {
    * Get the row height
    */
   getRowHeight(row: any): number {
-    let rowHeight = this.rowHeight;
+    let height;
 
     // if its a function return it
     if (typeof this.rowHeight === 'function') {
-      rowHeight = this.rowHeight(row);
+      height = this.rowHeight(row);
+    } else {
+      height = this.rowHeight;
     }
 
-    return <any>rowHeight;
+    return height;
   }
 
   /**
